@@ -13,34 +13,6 @@ A full-stack JWT authentication system with Node.js backend and React frontend.
 - **Backend**: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, CORS
 - **Frontend**: React, Context API, Axios
 
-## Project Structure
-
-jwt-auth-project/
-├── backend/
-│ ├── models/
-│ │ └── User.js
-│ ├── routes/
-│ │ └── auth.js
-│ ├── .env
-│ ├── package.json
-│ └── server.js
-├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ │ ├── Login.jsx
-│ │ │ ├── Register.jsx
-│ │ │ └── Dashboard.jsx
-│ │ ├── context/
-│ │ │ └── AuthContext.jsx
-│ │ ├── App.jsx
-│ │ ├── main.jsx
-│ │ └── index.css
-│ ├── public/
-│ ├── package.json
-│ └── vite.config.js
-└── README.md
-
-
 ## Setup Instructions
 
 ### Backend Setup
