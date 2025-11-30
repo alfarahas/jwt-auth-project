@@ -17,17 +17,28 @@ A full-stack JWT authentication system with Node.js backend and React frontend.
 
 jwt-auth-project/
 ├── backend/
-│ ├── models/User.js
-│ ├── routes/auth.js
+│ ├── models/
+│ │ └── User.js
+│ ├── routes/
+│ │ └── auth.js
+│ ├── .env
+│ ├── package.json
 │ └── server.js
 ├── frontend/
 │ ├── src/
 │ │ ├── components/
+│ │ │ ├── Login.jsx
+│ │ │ ├── Register.jsx
+│ │ │ └── Dashboard.jsx
 │ │ ├── context/
-│ │ └── App.js
-│ └── public/
+│ │ │ └── AuthContext.jsx
+│ │ ├── App.jsx
+│ │ ├── main.jsx
+│ │ └── index.css
+│ ├── public/
+│ ├── package.json
+│ └── vite.config.js
 └── README.md
-
 
 
 ## Setup Instructions
