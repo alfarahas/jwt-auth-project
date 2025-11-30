@@ -29,14 +29,15 @@ jwt-auth-project/
 └── README.md
 
 
+
 ## Setup Instructions
 
 ### Backend Setup
 1. Navigate to backend directory: `cd backend`
 2. Install dependencies: `npm install`
-3. Create `.env` file from `.env.example`
+3. Create `.env` file with the following variables:
 4. Start MongoDB service
-5. Run development server: `npm run dev`
+5. Run development server: `npm run dev` or `node server.js`
 
 ### Frontend Setup
 1. Navigate to frontend directory: `cd frontend`
@@ -50,6 +51,7 @@ jwt-auth-project/
 ## Environment Variables
 Create `.env` file in backend directory:
 
+```env
 MONGODB_URI=mongodb://localhost:27017/auth-app
 JWT_SECRET=your_super_secret_jwt_key_here
 PORT=5000
