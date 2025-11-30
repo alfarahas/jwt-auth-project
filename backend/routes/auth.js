@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ const generateToken = (userId) => {
   });
 };
 
-// Register route
+// Register route - MANUAL PASSWORD HASHING
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -27,8 +28,16 @@ router.post('/register', async (req, res) => {
       });
     }
 
-    // Create new user
-    const user = new User({ username, email, password });
+    // ✅ MANUALLY HASH PASSWORD before creating user
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // Create new user with hashed password
+    const user = new User({ 
+      username, 
+      email, 
+      password: hashedPassword  // Use the hashed password
+    });
+    
     await user.save();
 
     // Generate token
@@ -44,6 +53,7 @@ router.post('/register', async (req, res) => {
       }
     });
   } catch (error) {
+    console.error('Register error:', error);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });

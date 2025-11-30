@@ -19,6 +19,15 @@ app.get('/', (req, res) => {
   res.json({ message: 'Auth API is running!' });
 });
 
+// Error handling middleware
+app.use((error, req, res, next) => {
+  console.error('Error Stack:', error.stack);
+  res.status(500).json({ 
+    message: 'Server error', 
+    error: error.message 
+  });
+});
+
 // Database connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/auth-app')
   .then(() => console.log('Connected to MongoDB'))

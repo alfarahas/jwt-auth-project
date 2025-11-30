@@ -3,11 +3,53 @@
 A full-stack JWT authentication system with Node.js backend and React frontend.
 
 ## Features
-- User Registration & Login
-- Password hashing with bcrypt
-- JWT token-based authentication
-- Protected routes
+- ✅ User Registration & Login
+- ✅ Password hashing with bcrypt
+- ✅ JWT token-based authentication
+- ✅ Protected routes with React Context
+- ✅ MongoDB database integration
 
 ## Tech Stack
-- Backend: Node.js, Express, MongoDB, JWT, bcrypt
-- Frontend: React, Context API
+- **Backend**: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, CORS
+- **Frontend**: React, Context API, Axios
+
+## Project Structure
+
+jwt-auth-project/
+├── backend/
+│ ├── models/User.js
+│ ├── routes/auth.js
+│ └── server.js
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── context/
+│ │ └── App.js
+│ └── public/
+└── README.md
+
+
+## Setup Instructions
+
+### Backend Setup
+1. Navigate to backend directory: `cd backend`
+2. Install dependencies: `npm install`
+3. Create `.env` file from `.env.example`
+4. Start MongoDB service
+5. Run development server: `npm run dev`
+
+### Frontend Setup
+1. Navigate to frontend directory: `cd frontend`
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
+
+## API Endpoints
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+
+## Environment Variables
+Create `.env` file in backend directory:
+
+MONGODB_URI=mongodb://localhost:27017/auth-app
+JWT_SECRET=your_super_secret_jwt_key_here
+PORT=5000
