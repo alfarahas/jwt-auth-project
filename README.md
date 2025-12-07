@@ -13,22 +13,6 @@ A full-stack JWT authentication system with Node.js backend and React frontend.
 - **Backend**: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, CORS
 - **Frontend**: React, Context API, Axios
 
-## Project Structure
-
-jwt-auth-project/
-├── backend/
-│ ├── models/User.js
-│ ├── routes/auth.js
-│ └── server.js
-├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── context/
-│ │ └── App.js
-│ └── public/
-└── README.md
-
-
 ## Setup Instructions
 
 ### Backend Setup
