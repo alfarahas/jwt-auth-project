@@ -18,10 +18,24 @@ export const AuthProvider = ({ children }) => {
   // Check if user is logged in on app start
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      // Set default authorization header
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // In a real app, you'd verify the token with the backend here
+    const userData = localStorage.getItem('user');
+    
+    if (token && userData) {
+      try {
+        // Parse user data from localStorage
+        const parsedUser = JSON.parse(userData);
+        
+        // Set default authorization header
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        
+        // Set user state
+        setUser(parsedUser);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        // Clear invalid data
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
     }
     setLoading(false);
   }, []);
@@ -35,8 +49,14 @@ export const AuthProvider = ({ children }) => {
 
       const { token, user } = response.data;
       
+      // Save both token and user data to localStorage
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      // Set axios header
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+      // Update state
       setUser(user);
       
       return { success: true };
@@ -58,8 +78,14 @@ export const AuthProvider = ({ children }) => {
 
       const { token, user } = response.data;
       
+      // Save both token and user data to localStorage
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      // Set axios header
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+      // Update state
       setUser(user);
       
       return { success: true };
@@ -73,6 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     delete axios.defaults.headers.common['Authorization'];
     setUser(null);
   };
