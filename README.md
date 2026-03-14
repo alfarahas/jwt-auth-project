@@ -29,7 +29,7 @@ A full-stack JWT authentication system with Node.js backend and React frontend.
 
 ## API Endpoints
 - `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
+- `POST /api/auth/login` - User login this is
 
 ## Environment Variables
 Create `.env` file in backend directory:
